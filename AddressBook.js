@@ -120,7 +120,6 @@ function deleteContact(firstName) {
         if (person.firstName == firstName)
             personArray.pop();
     });
-    console.log("Existing Contact : " + personArray);
 }
 
 let personExist;
@@ -130,7 +129,7 @@ function findPerson(firstName) {
             personExist = person;
     });
     if (personExist != null)
-        console.log("Contact match: ");
+        console.log("Contact match");
     else
         throw "Contact haven't match";
 }
@@ -139,9 +138,9 @@ function addPerson(person) {
     if (personArray == null) {
         personArray.push(person);
     }
-    personArray.forEach(person => {
-        if (person.firstName == person.firstName)
-            personExist = person;
+    personArray.forEach(everyPerson => {
+        if (everyPerson.firstName == person.firstName)
+            personExist = everyPerson;
     });
     if (personExist == null)
         personArray.push(person);
@@ -149,25 +148,34 @@ function addPerson(person) {
         throw "Person exists";
 }
 
-try {
-    let personObj1 = new Person("usha", "ahirwar", "Rohini", "NewDelhi", "newDelhi", 110035, 7864323321, "usha@gmail.com");
-    let personObj2 = new Person("Jiya", "Srivastava", "Ecovillage", "Varanasi", "Noida", 560063, 917398031234, "jiya@gmail.com");
+function searchPerson(location, search) {
+    switch (location) {
+        case "city":
+            console.log(personArray.filter(person => person.city == search));
+        case "state":
+            console.log(personArray.filter(person => person.state == search));
+    }
+}
 
-    personArray.push(personObj1);
-    personArray.push(personObj2);
+try {
+    let personObj1 = new Person("Usha", "Ahirwar", "Shivpur", "Bangalore", "Uttar", 560069, 917398033321, "usha@gmail.com");
+    let personObj2 = new Person("Aditya", "Bharti", "Ecovillage", "Varanasi", "Noida", 560063, 917398031234, "adi@gmail.com");
+    let personObj3 = new Person("Tusar", "Patel", "Panchsheel", "GreaterNoida", "UttarPradesh", 561234, 917312371234, "tusar@gmail.com");
+
+    addPerson(personObj1);
+    addPerson(personObj2);
+    addPerson(personObj3);
     console.log(personArray);
 
-    editContact("Jiya", "state", "Delhi");
-    deleteContact("Jiya");
+    editContact("Aditya", "state", "Delhi");
+    deleteContact("Aditya");
     console.log("Number of Contacts : " + personArray.reduce(count => count + 1, 0));
-    findPerson("Pallavi");
-    addPerson(personObj1);
+    findPerson("Usha");
+    searchPerson("state", "Uttar");
 
 } catch (Exception) {
     console.log(Exception);
 }
-/*Ability to ensure there is no
-Duplicate Entry of the same
-Person in the Address Book - Duplicate Check is done on Person Name
-before adding person to Address Book.
-- Use Array Functions of filter, map, reduce,*/
+/*Ability to search
+Person in a particular
+City or State - Use Array Functions of filter, map,*/
