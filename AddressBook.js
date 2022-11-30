@@ -184,15 +184,18 @@ try {
     searchPerson("state", "Uttar");
     countPerson("city", "Bangalore")
     console.log("Sort By Name" + personArray.sort((a, b) => a.firstName.localeCompare(b.firstName)));
+    console.log("Sort By ZipCode" + personArray.sort((a, b) => a.zip === (b.zip)));
+    console.log("Sort By City" + personArray.sort((a, b) => a.city.localeCompare(b.city)));
+    console.log("Sort By State" + personArray.sort((a, b) => a.state.localeCompare(b.state)));
+
 
 } catch (Exception) {
     console.log(Exception);
 }
-/*Ability to sort the entries in the
-address book alphabetically by
-Person’s name
-- Use Console to sort person details by name
-- Use Collection Library for Sorting
-- Override toString method to finally Print Person Entry in
-Concole
-- Use Java Streams*/
+
+/*Ability to sort the entries
+in the address book by
+City, State, or Zip - Write functions to sort person by City, State or
+Zip
+- Use Array Functions of filter, map, reduce, etc to*/
+
