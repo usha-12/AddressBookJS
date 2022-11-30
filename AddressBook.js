@@ -1,4 +1,5 @@
 console.log("------------------------------Welcome to the Address book program-----------------------------");
+const prompt = require('prompt-sync')();
 const NAME_REGEX_PATTERN = RegExp('^[A-Z]{1}[a-z]{2,}$');
 const ADDRESS_REGEX_PATTERN = RegExp('^[a-zA-z]{3,}$');
 const PINCODE_REGEX_PATTERN = RegExp('^[1-9]{1}[0-9]{2}\\s{0,1}[0-9]{3}$');
@@ -14,7 +15,6 @@ class Contact {
     zip;
     phoneNumber;
     email;
-
     constructor(firstName, lastName, address, city, state, zip, phoneNumber, email) {
         if (!NAME_REGEX_PATTERN.test(firstName)) {
             console.log('Please enter valid firstname.');
@@ -57,25 +57,50 @@ class Contact {
             this.email = email;
         }
     }
+    set firstName(firstName) {
+        this.firstName = firstName;
+    }
 
-    //method
     toString() {
         return "Firstname: " + this.firstName + " Lastname: " + this.lastName + " Address: " + this.address + " City: " + this.city +
             " State: " + this.state + " Zip: " + this.zip + " Phone Number: " + this.phoneNumber + " Email: " + this.email;
     }
 }
-try {
-    let person = new Contact("Usha", "Ahirwar", "Rohini", "NewDelhi", "Delhi", 110035, 56779005675, "usha@gmail.com");
-    console.log(person.toString());
-} catch (e) {
-    console.log(e);
-}
 
-/*Ability to ensure Valid
-Contacts are added... - First Name and Last Name should start with
-Capital and Minimum 3 Characters
-- Address, City and State should also have
-minimum 4 characters
-- Zip, Phone and Email should be valid as done in
-the Pattern Exercise
-- Throw Error if the RegEx test fails*/
+let addressBookArray = new Array();
+let countEntry = 0;
+do {
+    countEntry = prompt("Press 1) Add Contact 2) Edit Contact 3) View Contact 0) Exit: ");
+    if (countEntry == 1) {
+        let FirstName = prompt("Enter Firstname: ");
+        let LastName = prompt("Enter Lastname: ");
+        let Address = prompt("Enter Address: ");
+        let City = prompt("Enter City name: ");
+        let State = prompt("Enter State name: ");
+        let Zip = prompt("Enter pincode: ");
+        let PhoneNumber = prompt("Enter phone number: ");
+        let EmailId = prompt("Enter email id: ");
+        try {
+            let person = new Contact(FirstName, LastName, Address, City, State, Zip, PhoneNumber, EmailId);
+            addressBookArray.push(person);
+            console.log("Contact is added. ");
+        } catch (e) {
+            console.log(e);
+        }
+    }
+    if (countEntry == 2) {
+        if (addressBookArray.length == 0) {
+            console.log("No contacts");
+        }
+        let userData = prompt("Enter the contact firstname which you want to edit: ");
+        findContact(userData);
+    }
+    if (countEntry == 3) {
+        console.log(addressBookArray.toString() + "\n");
+    }
+} while (countEntry != 0);
+
+/* Ability to create a
+New Address Book
+array and add new
+Contacts to it*/
