@@ -174,6 +174,16 @@ function viewPerson(location, view) {
     }
 }
 
+function countPerson(location, view) {
+    switch (location) {
+        case "city":
+            console.log(personArray.filter(person => person.city == view).reduce(count => count + 1, 0));
+        case "state":
+            console.log(personArray.filter(person => person.state == view).reduce(count => count + 1, 0));
+    }
+}
+
+
 try {
     let personObj1 = new Person("Usha", "Ahirwar", "Shivpur", "Bangalore", "Uttar", 560069, 917398033321, "usha@gmail.com");
     let personObj2 = new Person("Aditya", "Bharti", "Ecovillage", "Varanasi", "Noida", 560063, 917398031234, "adi@gmail.com");
@@ -193,6 +203,10 @@ try {
 } catch (Exception) {
     console.log(Exception);
 }
-/*Ability to view
-Persons by City or
-State - Use Array Functions of filter, map,*/
+/*Ability to get number
+of contact persons i.e.
+count by City or State - Search Result will show count by city and by
+state
+- Use Array Functions of filter, map, reduce,
+
+ etc to do the check*/
