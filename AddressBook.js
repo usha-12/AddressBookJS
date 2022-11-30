@@ -67,6 +67,64 @@ class Contact {
     }
 }
 
+
+function findContact(userData) {
+    let contactToEdit;
+    for (let i = 0; i < addressBookArray.length; i++) {
+        if (addressBookArray[i].firstName === userData)
+            contactToEdit = addressBookArray[i];
+        if (contactToEdit != null) {
+            let input = 1;
+            while (input != 9) {
+                console.log("\nChoose:");
+                console.log("\n1. Edit First Name \n2. Edit Last Name \n3. Edit Address \n4. Edit City \n5. Edit State");
+                console.log("6. Edit ZipCode \n7. Edit Phone No \n8. Edit Email \n9. View Edited Details & Exit");
+                input = prompt("Enter Your Choice: ");
+                input = parseInt(input);
+                switch (input) {
+                    case 1:
+                        let fname = prompt("Enter the firstname: ");
+                        contactToEdit.firstName = fname;
+                        break;
+                    case 2:
+                        let lname = prompt("Enter the last Name: ");
+                        contactToEdit.lastName = lname;
+                        break;
+                    case 3:
+                        let address_edit = prompt("Enter the address: ");
+                        contactToEdit.address = address_edit;
+                        break;
+                    case 4:
+                        let city_edit = prompt("Enter the city: ");
+                        contactToEdit.city = city_edit;
+                        break;
+                    case 5:
+                        let state_edit = prompt("Enter the state: ");
+                        contactToEdit.state = state_edit;
+                        break;
+                    case 6:
+                        let zip_edit = prompt("Enter the pincode: ");
+                        contactToEdit.zip = zip_edit;
+                        break;
+                    case 7:
+                        let phone_edit = prompt("Enter the phone number: ");
+                        contactToEdit.phoneNumber = phone_edit;
+                        break;
+                    case 8:
+                        let mail_edit = prompt("Enter the email: ");
+                        contactToEdit.email = mail_edit;
+                        break;
+                    case 9:
+                        console.log("\n", contactToEdit);
+                        break;
+                    default:
+                        console.log("Wrong Input");
+                }
+            }
+        }
+    }
+}
+
 let addressBookArray = new Array();
 let countEntry = 0;
 do {
@@ -100,7 +158,7 @@ do {
     }
 } while (countEntry != 0);
 
-/* Ability to create a
-New Address Book
-array and add new
-Contacts to it*/
+/* Ability to find
+existing contact
+person using their
+name and edit it*/
