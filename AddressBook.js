@@ -156,23 +156,6 @@ function searchPerson(location, search) {
             console.log(personArray.filter(person => person.state == search));
     }
 }
-function searchPerson(location, search) {
-    switch (location) {
-        case "city":
-            console.log(personArray.filter(person => person.city == search));
-        case "state":
-            console.log(personArray.filter(person => person.state == search));
-    }
-}
-
-function viewPerson(location, view) {
-    switch (location) {
-        case "city":
-            console.log(personArray.filter(person => person.city == view));
-        case "state":
-            console.log(personArray.filter(person => person.state == view));
-    }
-}
 
 function countPerson(location, view) {
     switch (location) {
@@ -199,14 +182,17 @@ try {
     console.log("Number of Contacts : " + personArray.reduce(count => count + 1, 0));
     findPerson("Usha");
     searchPerson("state", "Uttar");
+    countPerson("city", "Bangalore")
+    console.log("Sort By Name" + personArray.sort((a, b) => a.firstName.localeCompare(b.firstName)));
 
 } catch (Exception) {
     console.log(Exception);
 }
-/*Ability to get number
-of contact persons i.e.
-count by City or State - Search Result will show count by city and by
-state
-- Use Array Functions of filter, map, reduce,
-
- etc to do the check*/
+/*Ability to sort the entries in the
+address book alphabetically by
+Person’s name
+- Use Console to sort person details by name
+- Use Collection Library for Sorting
+- Override toString method to finally Print Person Entry in
+Concole
+- Use Java Streams*/
