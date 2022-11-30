@@ -15,7 +15,7 @@ class Contact {
     zip;
     phoneNumber;
     email;
-    constructor(firstName, lastName, address, city, state, zip, phoneNumber, email) {
+     constructor(firstName, lastName, address, city, state, zip, phoneNumber, email) {
         if (!NAME_REGEX_PATTERN.test(firstName)) {
             console.log('Please enter valid firstname.');
         } else {
@@ -137,7 +137,6 @@ let deletContact = () => {
         console.log("Contact is deleleted in Addressbook.")
     }
 }
-
 let addressBookArray = new Array();
 let countEntry = 0;
 do {
@@ -173,9 +172,6 @@ do {
         deletContact();
     }
 } while (countEntry != 0);
-
-/*Ability to find a
-person with name
-delete it from the
-
-array*/
+/*Ability to find
+number of contacts
+in the address book*/
