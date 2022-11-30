@@ -67,7 +67,6 @@ class Contact {
     }
 }
 
-
 function findContact(userData) {
     let contactToEdit;
     for (let i = 0; i < addressBookArray.length; i++) {
@@ -125,10 +124,24 @@ function findContact(userData) {
     }
 }
 
+let deletContact = () => {
+    if (addressBookArray.length == 0) {
+        console.log("No contact in the list");
+    }
+    let deleteName = prompt("Enter contact firstname you want to delete: ");
+    let found = addressBookArray.find((contact) => contact.firstName == deleteName);
+    if (found == undefined) {
+        console.log("No such contact in Addressbook.");
+    } else {
+        addressBookArray = addressBookArray.filter((contacts) => contacts.firstName != deleteName);
+        console.log("Contact is deleleted in Addressbook.")
+    }
+}
+
 let addressBookArray = new Array();
 let countEntry = 0;
 do {
-    countEntry = prompt("Press 1) Add Contact 2) Edit Contact 3) View Contact 0) Exit: ");
+    countEntry = prompt("Press 1) Add Contact 2) Edit Contact 3) View Contact 4) Delete Contact 0) Exit: ");
     if (countEntry == 1) {
         let FirstName = prompt("Enter Firstname: ");
         let LastName = prompt("Enter Lastname: ");
@@ -156,9 +169,13 @@ do {
     if (countEntry == 3) {
         console.log(addressBookArray.toString() + "\n");
     }
+    if (countEntry == 4) {
+        deletContact();
+    }
 } while (countEntry != 0);
 
-/* Ability to find
-existing contact
-person using their
-name and edit it*/
+/*Ability to find a
+person with name
+delete it from the
+
+array*/
