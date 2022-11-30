@@ -156,6 +156,23 @@ function searchPerson(location, search) {
             console.log(personArray.filter(person => person.state == search));
     }
 }
+function searchPerson(location, search) {
+    switch (location) {
+        case "city":
+            console.log(personArray.filter(person => person.city == search));
+        case "state":
+            console.log(personArray.filter(person => person.state == search));
+    }
+}
+
+function viewPerson(location, view) {
+    switch (location) {
+        case "city":
+            console.log(personArray.filter(person => person.city == view));
+        case "state":
+            console.log(personArray.filter(person => person.state == view));
+    }
+}
 
 try {
     let personObj1 = new Person("Usha", "Ahirwar", "Shivpur", "Bangalore", "Uttar", 560069, 917398033321, "usha@gmail.com");
@@ -176,6 +193,6 @@ try {
 } catch (Exception) {
     console.log(Exception);
 }
-/*Ability to search
-Person in a particular
-City or State - Use Array Functions of filter, map,*/
+/*Ability to view
+Persons by City or
+State - Use Array Functions of filter, map,*/
